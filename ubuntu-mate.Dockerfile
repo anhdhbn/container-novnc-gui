@@ -2,7 +2,8 @@ FROM anhdhbn/container-novnc-gui:ubuntu-base as ubuntu-mate
 
 RUN apt-get -qqy update \
     && apt-get -qqy install \
-        ubuntu-mate-desktop \
+        mate-desktop-environment \
+        ubuntu-mate-themes \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
