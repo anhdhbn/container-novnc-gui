@@ -6,9 +6,9 @@
 #==============================================
 
 if ! whoami &> /dev/null; then
-  if [ -w /etc/passwd ]; then
-    echo "${USER_NAME:-ubuntu}:x:$(id -u):0:${USER_NAME:-ubuntu} user:/home/${USER_NAME:-ubuntu}:/sbin/nologin" >> /etc/passwd
-  fi
+    if [ -w /etc/passwd ]; then
+        echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:/home/${USER_NAME:-default}:/sbin/nologin" >> /etc/passwd
+    fi
 fi
 
 /usr/bin/supervisord --configuration /etc/supervisor/supervisord.conf &
