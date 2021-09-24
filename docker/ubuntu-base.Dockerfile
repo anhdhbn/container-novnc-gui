@@ -33,7 +33,7 @@ RUN mkdir -p /tmp/.X11-unix && chmod 1777 /tmp/.X11-unix
 # ============================
 RUN apt-get -qqy update \
     && apt-get -qqy --no-install-recommends install \
-       htop terminator \
+       htop terminator firefox \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
@@ -48,15 +48,3 @@ RUN groupadd ubuntu \
     && usermod -a -G sudo ubuntu \
     && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && echo 'ubuntu:ubuntu' | chpasswd
-
-USER ubuntu
-
-RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- \
-    -a 'CASE_SENSITIVE="true"' \
-    -t robbyrussell \
-    -p https://github.com/zsh-users/zsh-autosuggestions \
-    -p https://github.com/zsh-users/zsh-completions
-
-USER root
-
-RUN usermod -s /bin/zsh ubuntu
