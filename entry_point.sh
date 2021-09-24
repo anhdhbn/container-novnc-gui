@@ -7,7 +7,17 @@
 
 if ! whoami &> /dev/null; then
     if [ -w /etc/passwd ]; then
-        echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:/home/${USER_NAME:-default}:/sbin/nologin" >> /etc/passwd
+        CURR_ID=$(id -u)
+        echo ubuntu | su ubuntu -c \
+        "sudo useradd ${USER_NAME:-default} \
+            --create-home \
+            --gid 1001 \
+            --shell /bin/bash \
+            --uid $CURR_ID"
+        echo ubuntu | su ubuntu -c "sudo usermod -a -G sudo ${USER_NAME:-default}"
+        HOME=/home/${USER_NAME:-default}
+        cd $HOME
+        echo "cd $HOME" >> $HOME/.bashrc
     fi
 fi
 
