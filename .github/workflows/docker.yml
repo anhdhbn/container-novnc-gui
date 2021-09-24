@@ -37,7 +37,7 @@ jobs:
       with:
         push: true
         tags: ${{ secrets.REPO }}:ubuntu-base
-        file: ubuntu-base.Dockerfile
+        file: docker/ubuntu-base.Dockerfile
         platforms: linux/amd64,linux/arm64,linux/arm
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
@@ -75,7 +75,7 @@ jobs:
       with:
         push: true
         tags: ${{ secrets.REPO }}:ubuntu-xfce
-        file: ubuntu-xfce.Dockerfile
+        file: docker/ubuntu-xfce.Dockerfile
         platforms: linux/amd64,linux/arm64,linux/arm
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
@@ -113,7 +113,7 @@ jobs:
       with:
         push: true
         tags: ${{ secrets.REPO }}:ubuntu-mate
-        file: ubuntu-mate.Dockerfile
+        file: docker/ubuntu-mate.Dockerfile
         platforms: linux/amd64,linux/arm64,linux/arm
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
