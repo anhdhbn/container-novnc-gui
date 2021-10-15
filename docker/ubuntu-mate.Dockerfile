@@ -23,4 +23,7 @@ RUN chmod +x /opt/bin/entry_point.sh /opt/bin/start-ui.sh
 
 USER ubuntu
 
+RUN gsettings set org.mate.screensaver lock-enabled false && \
+    gsettings set org.mate.screensaver idle-activation-enabled false
+
 CMD ["/opt/bin/entry_point.sh"]
