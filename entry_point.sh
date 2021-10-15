@@ -5,12 +5,6 @@
 # https://docs.openshift.com/container-platform/3.11/creating_images/guidelines.html#openshift-specific-guidelines
 #==============================================
 
-MOUNT_PATH="${MOUNT_PATH:-/home/ubuntu}"
-
-if [ ! -z $MOUNT_FOLDER ] && [ -a -d $MOUNT_PATH ]; then
-    sudo fix-perms -r -u ubuntu $MOUNT_PATH
-fi
-
 if ! whoami &> /dev/null; then
     if [ -w /etc/passwd ]; then
         CURR_ID=$(id -u)
