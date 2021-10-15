@@ -1,4 +1,6 @@
-FROM ubuntu:20.04
+FROM ubuntu:latest
+
+COPY --from=sudobmitch/base:scratch /usr/bin/gosu /usr/bin/fix-perms /usr/bin/
 
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
